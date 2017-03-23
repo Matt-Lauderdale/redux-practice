@@ -1,17 +1,18 @@
 import React from 'react';
+require('./components/scss/util/_default');
 
-var Component = React.createClass({
-  render: function () {
+export default class Component extends React.Component {
+  render() {
     if (this.props.onRender) {
       this.props.onRender();
     }
+
     return (
       <p>Hello world</p>
     );
-  },
-  propTypes: {
-    onRender: React.PropTypes.func
   }
-});
+}
 
-export default Component;
+Component.propTypes = {
+  onRender: React.PropTypes.func
+};

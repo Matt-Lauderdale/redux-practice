@@ -1,14 +1,24 @@
-var webpack = require('webpack');
-var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-var env = process.env.WEBPACK_ENV || 'dev';
-var WebpackDevServer = require('webpack-dev-server');
-var path = require('path');
+const webpack = require('webpack');
+const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const env = process.env.WEBPACK_ENV || 'dev';
+const WebpackDevServer = require('webpack-dev-server');
+const path = require('path');
+const autoprefixer = require('autoprefixer')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-var appName = 'app';
-var host = '0.0.0.0';
-var port = '9000';
+const sassLoaders = [
+  'css-loader',
+  'postcss-loader',
+  'sass-loader?includePaths[]=' + path.resolve(__dirname, './src')
+]
 
-var plugins = [], outputFile;
+const appName = 'app';
+const host = '127.0.0.1';
+const port = '9000';
+
+var plugins = [
+  new ExtractTextPlugin('[name].css')
+], outputFile;
 
 if (env === 'build') {
   plugins.push(new UglifyJsPlugin({ minimize: true }));
@@ -17,13 +27,13 @@ if (env === 'build') {
   outputFile = appName + '.js';
 }
 
-var config = {
+const config = {
   entry: './src/index.js',
   devtool: 'source-map',
   output: {
-    path: __dirname + '/lib',
+    path: __dirname + '/dist',
     filename: outputFile,
-    publicPath: __dirname + '/example'
+    publicPath: __dirname
   },
   module: {
     loaders: [
@@ -39,19 +49,28 @@ var config = {
         test: /(\.jsx|\.js)$/,
         loader: "eslint-loader",
         exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
       }
     ]
   },
+  postcss: [
+    autoprefixer({
+      browsers: ['last 2 versions']
+    })
+  ],
   resolve: {
     root: path.resolve('./src'),
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.scss']
   },
   plugins: plugins
 };
 
 if (env === 'dev') {
   new WebpackDevServer(webpack(config), {
-    contentBase: './example',
+    contentBase: './',
     hot: true,
     debug: true
   }).listen(port, host, function (err, result) {
