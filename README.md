@@ -2,13 +2,39 @@
 
 Since you're here, we'd like for you to build a version of the "Three Up" promo found in the comp below.
 
-Be as creative as you want. To get started quickly, clone the repo, create your own branch, and use the existing tools defined later in the README. If you see inefficient code, or a better way to write an existing component feel free to refactor. You should make as many components as you need, and organize, or reorganize code as you see fit.
+Be as creative as you want. Use the existing tools defined later in the README. If you see inefficient code, or a better way to write an existing component feel free to refactor. You should make as many components as you need, and organize, or reorganize code as you see fit.
 
 Don't worry about getting the fonts and spacing exactly right. Let the data in the model at `endpoint/promo-model.json` drive the display.
 
 The component should render on the base page at `http://127.0.0.1:9000/index.html` when the server is launched.
 
 ![ThreeUp Promo](img/threeup.png)
+
+## Getting started
+
+1. Check for an Email for Account Creation email. There’s a potential it went into a spam folder. If you don’t see it, check in spam for an email where the sender is gitlab@csedigital.com and subject is "Account was created for you"
+2. Click on link to set password
+3. Login with newly set password
+4. Set up an SSH key (or use existing key) http://gitlab.csedigital.com/profile/keys
+5. If you need help with setting up the SSH key http://gitlab.csedigital.com/help/ssh/README
+6. Add key to profile http://gitlab.csedigital.com/profile/keys
+7. Fork the repo: http://gitlab.csedigital.com/front-end/react-starter/forks/new
+8. When prompted, select yourself to create the fork.
+9. Once the fork is created, copy the SSH URL to your fork by clicking the copy icon.
+![Copy](img/copy.png)
+10. Clone repo (git clone <paste the copied URL>)
+11. There are usage instructions in the next section of the README to help get you started
+12. Push your changes to your fork (git push)
+13. When you're ready to share your solution, create a merge request:
+	* Click "Merge Requests"
+	* Click "New Merge Request"
+![New Merge request](img/mergerequest.png)
+	* Set "Source Branch" to your master branch (or another branch if you created one)
+	* Set "Target Branch" to "front-end/reactor-starter" and "master"
+	* Click "Compare branches and continue"
+![New Merge request continued](img/mergerequest2.png)
+	* On the next screen, enter a title for your pull request and assign to Phil Gurley for review.
+	* Click "Submit merge request"
 
 ## Usage
 
