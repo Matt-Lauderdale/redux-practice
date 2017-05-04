@@ -33,7 +33,7 @@ The component should render on the base page at `http://127.0.0.1:9000/index.htm
 	* Set "Target Branch" to "front-end/reactor-starter" and "master"
 	* Click "Compare branches and continue"
 ![New Merge request continued](img/mergerequest2.png)
-	* On the next screen, enter a title for your pull request and assign to Phil Gurley for review.
+	* On the next screen, enter a title for your pull request and assign to **Phil Gurley** for review.
 	* Click "Submit merge request"
 
 ## Usage
