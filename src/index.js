@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import Component from './Component';
 
-window.onload = () => {
-  const renderFunc = () => {
-    console.log('component rendered');
-  };
+import store from './components/js/store';
 
-  ReactDOM.render(
-    <Component onRender={renderFunc} />,
-    document.querySelector('#container')
-  );
-};
+const app = document.getElementById('container');
+
+ReactDOM.render(<Provider store={store}>
+  <Component/>
+</Provider>, app);
